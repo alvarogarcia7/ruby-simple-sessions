@@ -1,11 +1,16 @@
-def call_all_methods(object)
+def call_all_methods(object, *args) 
+  # remove methods that modify the PRY environment or are too verbose
+  exclusions = [:pry,
+                :methods,
+                :private_methods,
+                :public_methods].map { |x| x.to_s}
   object.methods.map { |x|
     begin
-      # remove pry method as this modifies the PRY environment
-      if x.to_s != "pry" then
-        [method(x), object.send(x)]
+      unless exclusions.include? x.to_s then
+        [method(x), object.send(x, *args)]
       end
     rescue StandardError => ex;
+      [x, ex]
     end
   }.select { |x| not x.nil?}
 end
