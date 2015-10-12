@@ -1,5 +1,3 @@
-require 'RSpec'
-
 def call_all_methods(object, *args)
   # remove methods that modify the PRY environment or are too verbose
   success = {}
