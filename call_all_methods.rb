@@ -15,7 +15,7 @@ def call_all_methods(object, *args)
         if (args.empty?) then
           success[x] = object.__send__(x)
         else
-          success[x] = object.__send__(x, args)
+          success[x] = object.__send__(x, *args)
         end
       rescue StandardError => ex
         error[x] = ex
