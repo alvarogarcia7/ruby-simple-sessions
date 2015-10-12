@@ -1,21 +1,24 @@
+require 'RSpec'
+
 def call_all_methods(object, *args)
   # remove methods that modify the PRY environment or are too verbose
-  success = []
-  error = []
+  success = {}
+  error = {}
   exclusions = [:pry,
                 :methods,
                 :private_methods,
-                :public_methods].map { |x| x.to_s}
+                :public_methods,
+                :gem].map { |x| x.to_s}
   object.methods.each { |x|
     unless exclusions.include? x.to_s then
       begin
         if (args.empty?) then
-          success << [x, object.send(x)]
+          success[x] = object.__send__(x)
         else
-          success << [x, object.send(x, *args)]
+          success[x] = object.__send__(x, args)
         end
       rescue StandardError => ex
-        error << [x, ex]
+        error[x] = ex
       end
     end
   }
