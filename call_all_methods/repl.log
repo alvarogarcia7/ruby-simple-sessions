@@ -1,0 +1,106 @@
+initial_hand = Hand.from('4s 5s')
+hand.methods.map { |x| begin hand.call(x) rescue StandardError => ex puts "#{x} not applicable: #{ex.message}" end }
+hand.methods.map { |x| begin; hand.call(x); rescue StandardError => ex; puts "#{x} not applicable: #{ex.message}"; end }
+h = hand.methods.map { |x| begin; hand.call(x); rescue StandardError => ex; puts "#{x} not applicable: #{ex.message}"; end }
+h
+h = hand.methods.map { |x| begin; hand.call(x); rescue StandardError => ex; puts "#{x} not applicable: #{ex.message}"; end }
+h = hand.methods.map { |x| begin; {x: hand.call(x)}; rescue StandardError => ex; {x: "#{x} not applicable: #{ex.message}"}; end }
+h
+hand = Hand.from('4s 5s')
+h = hand.methods.map { |x| begin; {x: hand.call(x)}; rescue StandardError => ex; {x: "#{x} not applicable: #{ex.message}"}; end }
+h = hand.methods.map { |x| begin; hand.call(x); rescue StandardError => ex;; end }
+h
+h = hand.methods.map { |x| begin; return hand.call(x); rescue StandardError => ex;; end }
+h
+h = hand.methods.map { |x| begin; puts hand.call(x); rescue StandardError => ex;; end }
+hand.methods.map { |x| begin; puts hand.call(x); rescue StandardError => ex;; end }
+hand.methods.map { |x| begin; puts hand.call(method(x)); rescue StandardError => ex;; end }
+hand.methods.map { |x| begin; puts hand.send(x); rescue StandardError => ex;; end }
+hand.methods.map { |x| begin; [x, hand.send(x)]; rescue StandardError => ex;; end }
+hand.methods.map { |x| begin; [method(x), hand.send(x)]; rescue StandardError => ex;; end }
+hand.methods.map { |x| begin; if x.to_s != "pry" [method(x), hand.send(x)] end; rescue StandardError => ex;; end }
+hand.methods.map { |x| begin; if x.to_s != "pry" then; [method(x), hand.send(x)]; end; rescue StandardError => ex;; end }
+hand.methods.map { |x| begin; if x.to_s != "pry" then; [method(x), hand.send(x)]; end; rescue StandardError => ex;; end }.select { |x| not x.is_nil?}
+nil.is_nil?
+nil.nil?
+hand.methods.map { |x| begin; if x.to_s != "pry" then; [method(x), hand.send(x)]; end; rescue StandardError => ex;; end }.select { |x| not x.nil?}
+1.methods
+call_all_methods(1)
+call_all_methods(1)
+vari()
+vari([])
+vari("a", "b")
+call_all_methods(1, 1)
+call_all_methods(1, 1)
+call_all_methods(1, 1)
+call_all_methods(1, )
+call_all_methods(1, )
+call_all_methods(1, 1)
+call_all_methods(1, 1)
+call_all_methods(1)
+call_all_methods(1)
+vari(1)
+vari(1)
+call_all_methods(1)
+call_all_methods(1,1)
+call_all_methods(1,[1])
+call_all_methods(1,[1])
+call_all_methods(1,[1])
+x = call_all_methods(1,[1])
+x[1]
+x[1][0]
+method(x[1][0])
+x = call_all_methods(1,[1])
+x = call_all_methods(1,[1])
+x[:error]
+x[:success]
+x = call_all_methods(1,1)
+x[:success]
+x[:error]
+1.succ
+x = call_all_methods(1)
+x[:success]
+x[:error]
+1.send(:succ)
+vari()
+vari()
+vari()
+vari([])
+[].empty?
+x = call_all_methods(1)
+x = call_all_methods(1)
+x[:success]
+x[:success][:succ]
+x[:success].select{|x| x.first ==:succ}
+x[:success].select{|x| x.first ==:odd}
+x[:error].select{|x| x.first ==:odd}
+RSpec
+RSpec.describe
+Rspec.describe
+require 'RSpec'
+Rspec.describe
+RSpec.describe
+RSpec
+RSpec.describe
+RSpec.describe
+call_all_methods(1,1)
+call_all_methods(1,99)
+call_all_methods(1,:s)
+call_all_methods(1,:s)
+call_all_methods(1,1)
+call_all_methods(1,1)
+call_all_methods(1,1)
+call_all_methods(1,1)
+call_all_methods(1,1)
+call_all_methods(1,1)
+call_all_methods(1,1)[:error]
+call_all_methods(1,1)[:error].select {|x| x.first == :succ}
+call_all_methods(1,1)[:error].select {|x| x.first == :succ}[0]
+call_all_methods(1,1)[:error].select {|x| x.first == :succ}[0].nil?
+call_all_methods(1,1)[:error].select {|x| x.first == :succ}[0][1].nil?
+call_all_methods(1,1)[:error].select {|x| x.first == :succ}[0][1].is_a?(StandardError.class)
+call_all_methods(1,1)[:error].select {|x| x.first == :succ}[0][1].is_a?(StandardError)
+call_all_methods(1)[:success][:odd?]
+call_all_methods(1,1)[:success][:odd?]
+call_all_methods(1,1)[:error][:odd?]
+call_all_methods(1,1)[:error]
